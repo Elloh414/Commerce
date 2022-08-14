@@ -20,6 +20,7 @@ const Products = () => {
       }
 
       return () => {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         componentMounted = false;
       };
     };
@@ -45,11 +46,10 @@ const Products = () => {
     );
   };
 
-
-  const filterProduct =(cat)=>{
-    const updatedList = data.filter((x)=>x.category === cat);
+  const filterProduct = (cat) => {
+    const updatedList = data.filter((x) => x.category === cat);
     setFilter(updatedList);
-  }
+  };
 
   const ShowProducts = () => {
     return (
@@ -65,7 +65,7 @@ const Products = () => {
             className="btn btn-outline-dark me-2"
             onClick={() => filterProduct("men's clothing")}
           >
-            Men
+            Men's Clothing
           </button>
           <button
             className="btn btn-outline-dark me-2"
@@ -73,7 +73,6 @@ const Products = () => {
           >
             Women
           </button>
-          
           <button
             className="btn btn-outline-dark me-2"
             onClick={() => filterProduct("jewelery")}
@@ -100,13 +99,17 @@ const Products = () => {
                   />
                   <div class="card-body">
                     <h5 class="card-title mb-0">
-                      {product.title.substring(0, 12)}...
+                      {/* {product.title.substring(0, 12)}... */}
+                      {product.title
+                        ? product.title.substring(0, 12)
+                        : product.title}
+                      ...
                     </h5>
                     <p class="card-text lead fw-bold">
                       Ksh {product.price * 125}
                     </p>
 
-                    <a href="#" class="btn btn-outlined-dark">
+                    <a href="#" className="btn btn-outlined-dark">
                       Buy Now
                     </a>
                   </div>
